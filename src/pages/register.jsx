@@ -8,34 +8,40 @@ function Register() {
     const navigate=useNavigate();
     const {register, handleSubmit, formState:{errors}}=useForm({
         resolver: zodResolver(registerschema)
-    })
+    });
     function onSubmit1(data){
         console.log(data)
         alert("register succes")
-        navigate("/")
+        navigate("/",{state:data})
     }
     return (
-        <>
-        <form onSubmit={handleSubmit(onSubmit1)}>
-            <label>Name </label>
-            <input placeholder="Enter your name" type="text" {...register("name")} />
+        <div className="min-h-screen flex items-center justify-center bg-orange-200 p-4">
+        
+        <form onSubmit={handleSubmit(onSubmit1)}
+            className="bg-yellow-100 p-8 rounded-xl shadow-lg">
+            <h1 className="!text-blue-600 text-4xl font-bold text-center mb-8">
+            Register
+            </h1>
+           
+            
+            <input placeholder="Enter your name" type="text" {...register("name")}
+            className="border p-2 rounded-xl text-black" />
             <p>{errors.name?.message}</p>
-
-            <label>Email </label>
-            <input placeholder="Enter your name" type="email" {...register("email")} />
+       
+            <input placeholder="Enter your email" type="email" {...register("email")} className="border p-2 rounded-xl text-black" />
             <p>{errors.email?.message}</p>
-
-            <label>Password </label>
-            <input placeholder="Enter Password"  type="password" {...register("password")} />
+           
+            
+            <input placeholder="Enter Password"  type="password" {...register("password")} className="border p-2 rounded-xl text-black" />
             <p>{errors.password?.message}</p>
 
-            <label>Age </label>
-            <input placeholder="Enter your age"  type="number" {...register("age")} />
+          
+            <input placeholder="Enter your age"  type="number" {...register("age")} className="border p-2 rounded-xl text-black" />
             <p>{errors.age?.message}</p>
 
-            <button type="submit">Submit</button>
+            <button type="submit" className="bg-blue-500 text-brown p-3 rounded-xl text-blue-600">Submit</button>
         </form>
-        </>
+        </div>
     );
 }
 

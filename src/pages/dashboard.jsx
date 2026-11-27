@@ -1,6 +1,8 @@
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
 function Dashboard(){
     const location=useLocation();
-    const[userdata,setuserdata]=usestate("");
+    const[userdata,setuserdata]=useState("");
     function displaydata(){
         setuserdata(location.state);
         console.log(userdata)
