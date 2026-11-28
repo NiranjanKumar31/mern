@@ -1,10 +1,25 @@
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
-function Admindashboard() {
-    return (
-        <div>
-            <h1>Admin Dashboard</h1>
-        </div>
-    );
+function Dashboard() {
+    const location=useLocation();
+    const[userdata,setUserdata]=useState("");
+    function displaydata(){
+        setUserdata(location.state);
+        console.log(userdata)
+    }
+    useEffect(()=>{
+        setUserdata(location.state)
+        console.log(userdata)
+    },[])
+    return ( 
+        <>
+        
+            dashboard
+        <br></br>
+        <button onClick={displaydata}>bu</button>
+        </>
+     );
 }
 
-export default Admindashboard;
+export default Dashboard;
